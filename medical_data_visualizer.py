@@ -22,7 +22,6 @@ def draw_cat_plot():
       ignore_index=False)
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the collumns for the catplot to work correctly.
-    #df_cat = df_cat.groupby(['cardio', 'variable', 'value'])['value'].count()
     df_cat = pd.DataFrame(df_cat.groupby(['cardio', 'variable', 'value'])['cardio']
       .count()).rename(columns = {'cardio' : 'total'}).reset_index()
 
@@ -63,7 +62,7 @@ def draw_heat_map():
     fig, ax = plt.subplots(figsize=(12, 12))
 
     # Draw the heatmap with 'sns.heatmap()'
-    ax = sns.heatmap(
+    sns.heatmap(
       corr,
       annot = True,
       center = 0,
